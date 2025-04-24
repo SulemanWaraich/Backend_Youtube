@@ -7,7 +7,7 @@ const app = new express();
 
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: 'https://genuine-malabi-cd343f.netlify.app',
         credentials: true,
     })
 );
