@@ -5,6 +5,28 @@ import morgan from "morgan";
 
 const app = new express();
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://genuine-malabi-cd343f.netlify.app",
+  "https://backend-long-log-6370.fly.dev"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // allow non-browser requests
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true
+  })
+);
+
+
+
 app.use(
     cors({
         origin: 'https://genuine-malabi-cd343f.netlify.app',
